@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerFit - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 16px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo img {
+            height: 40px;
+        }
+        .logo h1 {
+            font-size: 24px;
+            color: #1f2937;
+            margin: 0;
+        }
+        nav a {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 24px;
+            transition: color 0.2s;
+        }
+        nav a:hover {
+            color: #059669;
+        }
+        nav a.signup {
+            background: #10b981;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+        }
+        nav a.signup:hover {
+            background: #059669;
+        }
+        main {
+            flex-grow: 1;
+            padding: 32px 16px;
+        }
+        .hero {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 32px;
+            margin-bottom: 32px;
+            animation: fadeIn 0.5s ease-in;
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero-text {
+            flex: 1;
+        }
+        .hero-text h2 {
+            font-size: 36px;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+        .hero-text p {
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+        .hero-text a {
+            display: inline-block;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .hero-text a.primary {
+            background: #10b981;
+            color: white;
+        }
+        .hero-text a.primary:hover {
+            background: #059669;
+        }
+        .hero-text a.secondary {
+            background: #f3f4f6;
+            color: #1f2937;
+            margin-left: 16px;
+        }
+        .hero-text a.secondary:hover {
+            background: #e5e7eb;
+        }
+        .hero img {
+            flex: 1;
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .section-title {
+            font-size: 24px;
+            color: #1f2937;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+        .feature-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 24px;
+            transition: transform 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        .feature-card svg {
+            background: #d1fae5;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            padding: 12px;
+            margin-bottom: 16px;
+        }
+        .feature-card h4 {
+            font-size: 20px;
+            color: #1f2937;
+            margin-bottom: 12px;
+        }
+        .feature-card p {
+            color: #6b7280;
+        }
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 24px;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+            .hero {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="https://via.placeholder.com/40" alt="CareerFit Logo">
+                <h1>CareerFit</h1>
+            </div>
+            <nav>
+                <a href="fit.html" class="active">Home</a>
+                <a href="analyzer.html">Resume Analyzer</a>
+                <a href="login.html">Login</a>
+                <a href="signup.html" class="signup">Sign Up</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero">
+            <div class="hero-text">
+                <h2>Unlock Your Career Potential</h2>
+                <p>CareerFit uses AI to match your resume with ideal jobs.</p>
+                <a href="analyzer.html" class="primary">Analyze Resume</a>
+                <a href="signup.html" class="secondary">Create Account</a>
+            </div>
+            <img src="https://via.placeholder.com/600x400" alt="Career Growth">
+        </div>
+
+        <h3 class="section-title">How CareerFit Works</h3>
+        <div class="features">
+            <div class="feature-card">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#10b981">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <h4>Upload Resume</h4>
+                <p>Upload your PDF resume for AI analysis.</p>
+            </div>
+            <div class="feature-card">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#10b981">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+                <h4>Get Matched</h4>
+                <p>Find the best job matches for your skills.</p>
+            </div>
+            <div class="feature-card">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#10b981">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <h4>Improve Resume</h4>
+                <p>Get tips to enhance your resume.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 CareerFit. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle (simplified)
+        // Add toggle button and logic if needed
+    </script>
+</body>
+</html>

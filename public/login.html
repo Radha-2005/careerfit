@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - CareerFit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bubbles-container">
+        <div class="bubble blue-bubble"></div>
+        <div class="bubble blue-bubble"></div>
+        <div class="bubble blue-bubble"></div>
+        <div class="bubble blue-bubble"></div>
+        <div class="bubble blue-bubble"></div>
+        <div class="bubble blue-bubble"></div>
+        <div class="bubble blue-bubble"></div>
+        <div class="bubble blue-bubble"></div>
+        <div class="bubble blue-bubble"></div>
+        <div class="bubble blue-bubble"></div>
+    </div>
+
+    <nav>
+        <a href="fit.html">Home</a>
+        <a href="analyzer.html">Resume Analyzer</a>
+        <a href="signup.html" class="signup">Sign Up</a>
+    </nav>
+
+    <div class="wrapper">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="input-box">
+                <input type="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-box">
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+            <div class="input-box button">
+                <input type="submit" value="Login">
+            </div>
+            <div class="text">
+                <h3>Don't have an account? <a href="signup.html">Sign Up</a></h3>
+            </div>
+        </form>
+        <div id="error" style="color: red; text-align: center; margin-top: 10px; display: none;"></div>
+    </div>
+
+    <footer>
+        <p>© 2025 CareerFit. All rights reserved.</p>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const email = formData.get('email');
+            const password = formData.get('password');
+            const errorDiv = document.getElementById('error');
+
+            try {
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    window.location.href = 'fit.html';
+                } else {
+                    errorDiv.textContent = data.message || 'Login failed';
+                    errorDiv.style.display = 'block';
+                }
+            } catch (error) {
+                errorDiv.textContent = 'Error connecting to server';
+                errorDiv.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

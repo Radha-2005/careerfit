@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - CareerFit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bubbles-container">
+        <div class="bubble blue-bubble"></div>
+        <div class="bubble blue-bubble"></div>
+        <div class="bubble blue-bubble"></div>
+        <div class="bubble blue-bubble"></div>
+        <div class="bubble blue-bubble"></div>
+        <div class="bubble blue-bubble"></div>
+        <div class="bubble blue-bubble"></div>
+        <div class="bubble blue-bubble"></div>
+        <div class="bubble blue-bubble"></div>
+        <div class="bubble blue-bubble"></div>
+    </div>
+
+    <nav>
+        <a href="fit.html">Home</a>
+        <a href="analyzer.html">Resume Analyzer</a>
+        <a href="login.html" class="signup">Login</a>
+    </nav>
+
+    <div class="wrapper">
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <div class="input-box">
+                <input type="text" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="input-box">
+                <input type="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-box">
+                <input type="password" name="password" placeholder="Create password" required>
+            </div>
+            <div class="input-box">
+                <input type="password" name="confirmPassword" placeholder="Confirm password" required>
+            </div>
+            <div class="policy">
+                <input type="checkbox" name="terms" required>
+                <h3>I accept all terms & conditions</h3>
+            </div>
+            <div class="input-box button">
+                <input type="submit" value="Register Now">
+            </div>
+            <div class="text">
+                <h3>Already have an account? <a href="login.html">Login Now</a></h3>
+                <a href="fit.html" class="home-button">Home</a>
+            </div>
+        </form>
+        <div id="error" style="color: red; text-align: center; margin-top: 10px; display: none;"></div>
+    </div>
+
+    <footer>
+        <p>© 2025 CareerFit. All rights reserved.</p>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const password = formData.get('password');
+            const confirmPassword = formData.get('confirmPassword');
+            const errorDiv = document.getElementById('error');
+
+            if (password !== confirmPassword) {
+                errorDiv.textContent = 'Passwords do not match';
+                errorDiv.style.display = 'block';
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, password })
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    window.location.href = 'login.html';
+                } else {
+                    errorDiv.textContent = data.message || 'Signup failed';
+                    errorDiv.style.display = 'block';
+                }
+            } catch (error) {
+                errorDiv.textContent = 'Error connecting to server';
+                errorDiv.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
